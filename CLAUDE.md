@@ -102,7 +102,7 @@ Track the current sprint and completed modules here. Update after each sprint.
 | 17 | Hostel Management | ✅ Done (Sprint 13B) | Sprint 13B |
 | 11 | Homework & Lesson Planning | ✅ Done (Sprint 14) | Sprint 14 |
 | 12 | Communication | ✅ Done (Sprint 15) | Sprint 15 |
-| 13 | Reports & Analytics | Pending | Sprint 16 |
+| 13 | Reports & Analytics | ✅ Done (Sprint 16) | Sprint 16 |
 | 14 | System Administration | Pending | Sprint 17 |
 | 15 | Mobile PWA & API | Pending | Sprint 17 |
 | 19 | Subscription & Package Management | Pending | Sprint 17B |

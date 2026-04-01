@@ -7,6 +7,8 @@ use App\Http\Controllers\SchoolAdmin\FeeCategoryController;
 use App\Http\Controllers\SchoolAdmin\FeePaymentController;
 use App\Http\Controllers\SchoolAdmin\FeeStructureController;
 use App\Http\Controllers\SchoolAdmin\CommunicationController;
+use App\Http\Controllers\SchoolAdmin\IntegrationController;
+use App\Http\Controllers\SchoolAdmin\ReportController;
 use App\Http\Controllers\SchoolAdmin\HomeworkController;
 use App\Http\Controllers\SchoolAdmin\LeaveController;
 use App\Http\Controllers\SchoolAdmin\AssetController;
@@ -248,6 +250,25 @@ Route::middleware('auth')->group(function () {
             Route::get('communication/notifications',                              [CommunicationController::class, 'notifications'])->name('communication.notifications');
             Route::put('communication/notifications/{notification}/read',          [CommunicationController::class, 'markNotificationRead'])->name('communication.notifications.read');
             Route::put('communication/notifications/read-all',                     [CommunicationController::class, 'markAllNotificationsRead'])->name('communication.notifications.read-all');
+
+            // Reports & Analytics
+            Route::get('reports/dashboard',                     [ReportController::class, 'dashboard'])->name('reports.dashboard');
+            Route::get('reports/attendance',                    [ReportController::class, 'attendance'])->name('reports.attendance');
+            Route::get('reports/academic',                      [ReportController::class, 'academic'])->name('reports.academic');
+            Route::get('reports/finance',                       [ReportController::class, 'finance'])->name('reports.finance');
+            Route::get('reports/custom',                        [ReportController::class, 'customBuilder'])->name('reports.custom');
+            Route::post('reports/custom/run',                   [ReportController::class, 'runCustomReport'])->name('reports.custom.run');
+            Route::get('reports/custom/export-csv',             [ReportController::class, 'exportCsv'])->name('reports.custom.csv');
+            Route::get('reports/attendance/export-pdf',         [ReportController::class, 'exportAttendancePdf'])->name('reports.attendance.pdf');
+            Route::get('reports/finance/export-pdf',            [ReportController::class, 'exportFinancePdf'])->name('reports.finance.pdf');
+            Route::get('reports/audit-log',                     [ReportController::class, 'auditLog'])->name('reports.audit-log');
+
+            // Integrations / Gateway Settings
+            Route::get('settings/integrations',                 [IntegrationController::class, 'index'])->name('settings.integrations');
+            Route::post('settings/integrations/smtp',           [IntegrationController::class, 'saveSmtp'])->name('settings.integrations.smtp');
+            Route::post('settings/integrations/smtp/test',      [IntegrationController::class, 'testSmtp'])->name('settings.integrations.smtp.test');
+            Route::post('settings/integrations/sms',            [IntegrationController::class, 'saveSms'])->name('settings.integrations.sms');
+            Route::post('settings/integrations/sms/test',       [IntegrationController::class, 'testSms'])->name('settings.integrations.sms.test');
 
             Route::resource('departments',  DepartmentController::class)->except(['create', 'edit', 'show']);
             Route::resource('designations', DesignationController::class)->except(['create', 'edit', 'show']);

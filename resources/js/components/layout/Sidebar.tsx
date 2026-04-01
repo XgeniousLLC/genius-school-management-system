@@ -5,6 +5,7 @@ import {
     Library, Bus, Home, Package, MessageSquare, BarChart3,
     Settings, ChevronLeft, ChevronRight, Layers, Clock, CalendarOff,
     Building2, BadgeCheck, NotebookPen, Video, Megaphone, Mail, Send, Bell,
+    PieChart, FileText, TrendingUp, Wrench, ShieldCheck, Plug,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useUIStore } from '@/Stores/useUIStore';
@@ -98,11 +99,22 @@ const navGroups: NavGroup[] = [
         ],
     },
     {
+        title: 'Reports',
+        items: [
+            { label: 'Dashboard',        href: '/school/reports/dashboard',  icon: PieChart,    roles: ['super-admin','school-admin','principal','teacher','accountant'] },
+            { label: 'Attendance',       href: '/school/reports/attendance', icon: ClipboardList,roles: ['super-admin','school-admin','principal','teacher'] },
+            { label: 'Academic',         href: '/school/reports/academic',   icon: TrendingUp,  roles: ['super-admin','school-admin','principal','teacher'] },
+            { label: 'Finance',          href: '/school/reports/finance',    icon: DollarSign,  roles: ['super-admin','school-admin','accountant'] },
+            { label: 'Custom Report',    href: '/school/reports/custom',     icon: FileText,    roles: ['super-admin','school-admin','principal','accountant'] },
+            { label: 'Audit Log',        href: '/school/reports/audit-log',  icon: ShieldCheck, roles: ['super-admin','school-admin'] },
+        ],
+    },
+    {
         title: 'Admin',
         items: [
-            { label: 'Reports',     href: '/reports',       icon: BarChart3,      roles: ['school-admin','principal','accountant'] },
-            { label: 'Settings',    href: '/settings',      icon: Settings,       roles: ['school-admin','super-admin'] },
-            { label: 'Users',       href: '/super-admin/users', icon: Users,      roles: ['super-admin'] },
+            { label: 'Integrations', href: '/school/settings/integrations', icon: Plug,     roles: ['super-admin','school-admin'] },
+            { label: 'Settings',     href: '/settings',                     icon: Settings, roles: ['school-admin','super-admin'] },
+            { label: 'Users',        href: '/super-admin/users',            icon: Users,    roles: ['super-admin'] },
         ],
     },
 ];
